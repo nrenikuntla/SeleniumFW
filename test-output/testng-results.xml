@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="8" total="9" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="18396" started-at="2018-08-07T18:39:10Z" finished-at="2018-08-07T18:39:28Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="18396" started-at="2018-08-07T18:39:10Z" finished-at="2018-08-07T18:39:28Z">
+      <class name="com.placepass.marriottMoments.tests.TestClass1">
+        <test-method status="PASS" signature="startSession()[pri:0, instance:com.placepass.marriottMoments.tests.TestClass1@4b9e13df]" name="startSession" is-config="true" duration-ms="9414" started-at="2018-08-07T14:39:10Z" finished-at="2018-08-07T14:39:19Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- startSession -->
+        <test-method status="PASS" signature="tc1_verifyDestinationPageNavigation()[pri:0, instance:com.placepass.marriottMoments.tests.TestClass1@4b9e13df]" name="tc1_verifyDestinationPageNavigation" duration-ms="8639" started-at="2018-08-07T14:39:19Z" description="TC_TA_001" finished-at="2018-08-07T14:39:28Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tc1_verifyDestinationPageNavigation -->
+        <test-method status="PASS" signature="stopSession()[pri:0, instance:com.placepass.marriottMoments.tests.TestClass1@4b9e13df]" name="stopSession" is-config="true" duration-ms="284" started-at="2018-08-07T14:39:28Z" finished-at="2018-08-07T14:39:28Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- stopSession -->
+      </class> <!-- com.placepass.marriottMoments.tests.TestClass1 -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
