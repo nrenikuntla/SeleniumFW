@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="default">
 	  <listeners>
-		<listener class-name="marriott.com.placepass.utils.ScreenshotListener" />
+		<listener class-name="com.placepass.marriottMoments.utils.ScreenshotListener" />
 	</listeners> 
 	<test name="Regression1" preserve-order="false">
 		<classes>
