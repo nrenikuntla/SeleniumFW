@@ -1,25 +1,167 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="8" total="9" passed="1">
+<testng-results skipped="0" failed="1" ignored="0" total="9" passed="8">
   <reporter-output>
+    <line>
+      <![CDATA[<a href='C:\Users\neeli\Documents\SeleniumFW_new\marriottMoments\screenshots\tc4_verifyAavilabityDates_13_08_2018_10_25_30.png'> <img src='C:\Users\neeli\Documents\SeleniumFW_new\marriottMoments\screenshots\tc4_verifyAavilabityDates_13_08_2018_10_25_30.png' height='100' width='100'/> </a>]]>
+    </line>
   </reporter-output>
-  <suite name="Default suite" duration-ms="18396" started-at="2018-08-07T18:39:10Z" finished-at="2018-08-07T18:39:28Z">
+  <suite name="default" duration-ms="466623" started-at="2018-08-13T14:22:35Z" finished-at="2018-08-13T14:30:22Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="18396" started-at="2018-08-07T18:39:10Z" finished-at="2018-08-07T18:39:28Z">
+    <test name="Regression1" duration-ms="466623" started-at="2018-08-13T14:22:35Z" finished-at="2018-08-13T14:30:22Z">
       <class name="com.placepass.marriottMoments.tests.TestClass1">
-        <test-method status="PASS" signature="startSession()[pri:0, instance:com.placepass.marriottMoments.tests.TestClass1@4b9e13df]" name="startSession" is-config="true" duration-ms="9414" started-at="2018-08-07T14:39:10Z" finished-at="2018-08-07T14:39:19Z">
+        <test-method status="PASS" signature="startSession()[pri:0, instance:com.placepass.marriottMoments.tests.TestClass1@8bd1b6a]" name="startSession" is-config="true" duration-ms="6975" started-at="2018-08-13T10:22:35Z" finished-at="2018-08-13T10:22:42Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- startSession -->
-        <test-method status="PASS" signature="tc1_verifyDestinationPageNavigation()[pri:0, instance:com.placepass.marriottMoments.tests.TestClass1@4b9e13df]" name="tc1_verifyDestinationPageNavigation" duration-ms="8639" started-at="2018-08-07T14:39:19Z" description="TC_TA_001" finished-at="2018-08-07T14:39:28Z">
+        <test-method status="PASS" signature="tc0_verifyAllLinks()[pri:0, instance:com.placepass.marriottMoments.tests.TestClass1@8bd1b6a]" name="tc0_verifyAllLinks" duration-ms="10031" started-at="2018-08-13T10:22:42Z" description="TC_TA_Nav" finished-at="2018-08-13T10:22:52Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tc0_verifyAllLinks -->
+        <test-method status="PASS" signature="stopSession()[pri:0, instance:com.placepass.marriottMoments.tests.TestClass1@8bd1b6a]" name="stopSession" is-config="true" duration-ms="1759" started-at="2018-08-13T10:22:52Z" finished-at="2018-08-13T10:22:54Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- stopSession -->
+        <test-method status="PASS" signature="startSession()[pri:0, instance:com.placepass.marriottMoments.tests.TestClass1@8bd1b6a]" name="startSession" is-config="true" duration-ms="6444" started-at="2018-08-13T10:22:54Z" finished-at="2018-08-13T10:23:00Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- startSession -->
+        <test-method status="PASS" signature="tc1_verifyDestinationPageNavigation()[pri:0, instance:com.placepass.marriottMoments.tests.TestClass1@8bd1b6a]" name="tc1_verifyDestinationPageNavigation" duration-ms="3130" started-at="2018-08-13T10:23:00Z" description="TC_TA_001" finished-at="2018-08-13T10:23:04Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tc1_verifyDestinationPageNavigation -->
-        <test-method status="PASS" signature="stopSession()[pri:0, instance:com.placepass.marriottMoments.tests.TestClass1@4b9e13df]" name="stopSession" is-config="true" duration-ms="284" started-at="2018-08-07T14:39:28Z" finished-at="2018-08-07T14:39:28Z">
+        <test-method status="PASS" signature="stopSession()[pri:0, instance:com.placepass.marriottMoments.tests.TestClass1@8bd1b6a]" name="stopSession" is-config="true" duration-ms="897" started-at="2018-08-13T10:23:04Z" finished-at="2018-08-13T10:23:04Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- stopSession -->
+        <test-method status="PASS" signature="startSession()[pri:0, instance:com.placepass.marriottMoments.tests.TestClass1@8bd1b6a]" name="startSession" is-config="true" duration-ms="6421" started-at="2018-08-13T10:23:04Z" finished-at="2018-08-13T10:23:11Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- startSession -->
+        <test-method status="PASS" signature="tc2_verifyDestinationSearch()[pri:0, instance:com.placepass.marriottMoments.tests.TestClass1@8bd1b6a]" name="tc2_verifyDestinationSearch" duration-ms="16980" started-at="2018-08-13T10:23:11Z" description="TC_TA_007" finished-at="2018-08-13T10:23:28Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tc2_verifyDestinationSearch -->
+        <test-method status="PASS" signature="stopSession()[pri:0, instance:com.placepass.marriottMoments.tests.TestClass1@8bd1b6a]" name="stopSession" is-config="true" duration-ms="855" started-at="2018-08-13T10:23:28Z" finished-at="2018-08-13T10:23:29Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- stopSession -->
+        <test-method status="PASS" signature="startSession()[pri:0, instance:com.placepass.marriottMoments.tests.TestClass1@8bd1b6a]" name="startSession" is-config="true" duration-ms="6196" started-at="2018-08-13T10:23:29Z" finished-at="2018-08-13T10:23:35Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- startSession -->
+        <test-method status="PASS" signature="tc3_verifyDestinationSearch()[pri:0, instance:com.placepass.marriottMoments.tests.TestClass1@8bd1b6a]" name="tc3_verifyDestinationSearch" duration-ms="13618" started-at="2018-08-13T10:23:35Z" description="TC_TA_009" finished-at="2018-08-13T10:23:49Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tc3_verifyDestinationSearch -->
+        <test-method status="PASS" signature="stopSession()[pri:0, instance:com.placepass.marriottMoments.tests.TestClass1@8bd1b6a]" name="stopSession" is-config="true" duration-ms="832" started-at="2018-08-13T10:23:49Z" finished-at="2018-08-13T10:23:49Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- stopSession -->
+        <test-method status="PASS" signature="startSession()[pri:0, instance:com.placepass.marriottMoments.tests.TestClass1@8bd1b6a]" name="startSession" is-config="true" duration-ms="6235" started-at="2018-08-13T10:23:49Z" finished-at="2018-08-13T10:23:56Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- startSession -->
+        <test-method status="FAIL" signature="tc4_verifyAavilabityDates()[pri:0, instance:com.placepass.marriottMoments.tests.TestClass1@8bd1b6a]" name="tc4_verifyAavilabityDates" duration-ms="93981" started-at="2018-08-13T10:23:56Z" description="TC_TA_12" finished-at="2018-08-13T10:25:30Z">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[expected [true] but found [false]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:94)
+	at org.testng.Assert.failNotEquals(Assert.java:513)
+	at org.testng.Assert.assertTrue(Assert.java:42)
+	at org.testng.Assert.assertTrue(Assert.java:52)
+	at com.placepass.marriottMoments.pages.BookPage.verifyAvailability(BookPage.java:65)
+	at com.placepass.marriottMoments.tests.TestClass1.tc4_verifyAavilabityDates(TestClass1.java:56)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:104)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:645)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:851)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1177)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
+	at org.testng.TestRunner.privateRun(TestRunner.java:756)
+	at org.testng.TestRunner.run(TestRunner.java:610)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:387)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:382)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:340)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:289)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1293)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1218)
+	at org.testng.TestNG.runSuites(TestNG.java:1133)
+	at org.testng.TestNG.run(TestNG.java:1104)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+            <line>
+              <![CDATA[<a href='C:\Users\neeli\Documents\SeleniumFW_new\marriottMoments\screenshots\tc4_verifyAavilabityDates_13_08_2018_10_25_30.png'> <img src='C:\Users\neeli\Documents\SeleniumFW_new\marriottMoments\screenshots\tc4_verifyAavilabityDates_13_08_2018_10_25_30.png' height='100' width='100'/> </a>]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- tc4_verifyAavilabityDates -->
+        <test-method status="PASS" signature="stopSession()[pri:0, instance:com.placepass.marriottMoments.tests.TestClass1@8bd1b6a]" name="stopSession" is-config="true" duration-ms="926" started-at="2018-08-13T10:25:30Z" finished-at="2018-08-13T10:25:31Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- stopSession -->
+        <test-method status="PASS" signature="startSession()[pri:0, instance:com.placepass.marriottMoments.tests.TestClass1@8bd1b6a]" name="startSession" is-config="true" duration-ms="6418" started-at="2018-08-13T10:25:31Z" finished-at="2018-08-13T10:25:38Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- startSession -->
+        <test-method status="PASS" signature="tc5_maxPriceValidation()[pri:0, instance:com.placepass.marriottMoments.tests.TestClass1@8bd1b6a]" name="tc5_maxPriceValidation" duration-ms="14178" started-at="2018-08-13T10:25:38Z" description="TC_TA_13" finished-at="2018-08-13T10:25:52Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tc5_maxPriceValidation -->
+        <test-method status="PASS" signature="stopSession()[pri:0, instance:com.placepass.marriottMoments.tests.TestClass1@8bd1b6a]" name="stopSession" is-config="true" duration-ms="904" started-at="2018-08-13T10:25:52Z" finished-at="2018-08-13T10:25:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- stopSession -->
+        <test-method status="PASS" signature="startSession()[pri:0, instance:com.placepass.marriottMoments.tests.TestClass1@8bd1b6a]" name="startSession" is-config="true" duration-ms="5897" started-at="2018-08-13T10:25:53Z" finished-at="2018-08-13T10:25:59Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- startSession -->
+        <test-method status="PASS" signature="tc6_BookCalenderShouldApper()[pri:0, instance:com.placepass.marriottMoments.tests.TestClass1@8bd1b6a]" name="tc6_BookCalenderShouldApper" duration-ms="64104" started-at="2018-08-13T10:25:59Z" description="TC_TA_25" finished-at="2018-08-13T10:27:03Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tc6_BookCalenderShouldApper -->
+        <test-method status="PASS" signature="stopSession()[pri:0, instance:com.placepass.marriottMoments.tests.TestClass1@8bd1b6a]" name="stopSession" is-config="true" duration-ms="935" started-at="2018-08-13T10:27:03Z" finished-at="2018-08-13T10:27:04Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- stopSession -->
+        <test-method status="PASS" signature="startSession()[pri:0, instance:com.placepass.marriottMoments.tests.TestClass1@8bd1b6a]" name="startSession" is-config="true" duration-ms="6464" started-at="2018-08-13T10:27:04Z" finished-at="2018-08-13T10:27:10Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- startSession -->
+        <test-method status="PASS" signature="tc7_BookWith1Guest()[pri:0, instance:com.placepass.marriottMoments.tests.TestClass1@8bd1b6a]" name="tc7_BookWith1Guest" duration-ms="91837" started-at="2018-08-13T10:27:10Z" description="TC_TA_36" finished-at="2018-08-13T10:28:42Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tc7_BookWith1Guest -->
+        <test-method status="PASS" signature="stopSession()[pri:0, instance:com.placepass.marriottMoments.tests.TestClass1@8bd1b6a]" name="stopSession" is-config="true" duration-ms="1072" started-at="2018-08-13T10:28:42Z" finished-at="2018-08-13T10:28:43Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- stopSession -->
+        <test-method status="PASS" signature="startSession()[pri:0, instance:com.placepass.marriottMoments.tests.TestClass1@8bd1b6a]" name="startSession" is-config="true" duration-ms="6105" started-at="2018-08-13T10:28:43Z" finished-at="2018-08-13T10:28:49Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- startSession -->
+        <test-method status="PASS" signature="tc7_BookWithOutPayentInfo()[pri:0, instance:com.placepass.marriottMoments.tests.TestClass1@8bd1b6a]" name="tc7_BookWithOutPayentInfo" duration-ms="91730" started-at="2018-08-13T10:28:49Z" description="TC_TA_34" finished-at="2018-08-13T10:30:21Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tc7_BookWithOutPayentInfo -->
+        <test-method status="PASS" signature="stopSession()[pri:0, instance:com.placepass.marriottMoments.tests.TestClass1@8bd1b6a]" name="stopSession" is-config="true" duration-ms="1075" started-at="2018-08-13T10:30:21Z" finished-at="2018-08-13T10:30:22Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- stopSession -->
       </class> <!-- com.placepass.marriottMoments.tests.TestClass1 -->
-    </test> <!-- Default test -->
-  </suite> <!-- Default suite -->
+    </test> <!-- Regression1 -->
+  </suite> <!-- default -->
 </testng-results>

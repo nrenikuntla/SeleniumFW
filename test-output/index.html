@@ -24,7 +24,7 @@
     <div class="top-banner-root">
       <span class="top-banner-title-font">Test results</span>
       <br/>
-      <span class="top-banner-font-1">1 suite</span>
+      <span class="top-banner-font-1">1 suite, 1 failed test</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -37,8 +37,8 @@
       <div class="suite">
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
-            <a href="#" class="navigator-link" panel-name="suite-Default_suite">
-              <span class="suite-name border-passed">Default suite</span>
+            <a href="#" class="navigator-link" panel-name="suite-default">
+              <span class="suite-name border-failed">default</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -48,37 +48,37 @@
             <div class="suite-section-content">
               <ul>
                 <li>
-                  <a href="#" class="navigator-link " panel-name="test-xml-Default_suite">
-                    <span>C:\Users\neeli\AppData\Local\Temp\testng-eclipse-1421563418\testng-customsuite.xml</span>
+                  <a href="#" class="navigator-link " panel-name="test-xml-default">
+                    <span>C:\Users\neeli\Documents\SeleniumFW_new\marriottMoments\testng.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" class="navigator-link " panel-name="testlist-Default_suite">
+                  <a href="#" class="navigator-link " panel-name="testlist-default">
                     <span class="test-stats">1 test</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" class="navigator-link " panel-name="group-Default_suite">
+                  <a href="#" class="navigator-link " panel-name="group-default">
                     <span>0 groups</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" class="navigator-link " panel-name="times-Default_suite">
+                  <a href="#" class="navigator-link " panel-name="times-default">
                     <span>Times</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" class="navigator-link " panel-name="reporter-Default_suite">
+                  <a href="#" class="navigator-link " panel-name="reporter-default">
                     <span>Reporter output</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" class="navigator-link " panel-name="ignored-methods-Default_suite">
+                  <a href="#" class="navigator-link " panel-name="ignored-methods-default">
                     <span>Ignored methods</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" class="navigator-link " panel-name="chronological-Default_suite">
+                  <a href="#" class="navigator-link " panel-name="chronological-default">
                     <span>Chronological view</span>
                   </a> <!-- navigator-link  -->
                 </li>
@@ -91,21 +91,70 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">1 method,   1 passed</span>
+                    <span class="method-stats">9 methods, 1 failed,   8 passed</span>
+                  </li>
+                  <li>
+                    <span class="method-list-title failed">Failed methods</span>
+                    <span class="show-or-hide-methods failed">
+                      <a href="#" panel-name="suite-default" class="hide-methods failed suite-default"> (hide)</a> <!-- hide-methods failed suite-default -->
+                      <a href="#" panel-name="suite-default" class="show-methods failed suite-default"> (show)</a> <!-- show-methods failed suite-default -->
+                    </span>
+                    <div class="method-list-content failed suite-default">
+                      <span>
+                        <img width="3%" src="failed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-default" title="com.placepass.marriottMoments.tests.TestClass1" hash-for-method="tc4_verifyAavilabityDates">tc4_verifyAavilabityDates</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content failed suite-default -->
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
                     <span class="show-or-hide-methods passed">
-                      <a href="#" panel-name="suite-Default_suite" class="hide-methods passed suite-Default_suite"> (hide)</a> <!-- hide-methods passed suite-Default_suite -->
-                      <a href="#" panel-name="suite-Default_suite" class="show-methods passed suite-Default_suite"> (show)</a> <!-- show-methods passed suite-Default_suite -->
+                      <a href="#" panel-name="suite-default" class="hide-methods passed suite-default"> (hide)</a> <!-- hide-methods passed suite-default -->
+                      <a href="#" panel-name="suite-default" class="show-methods passed suite-default"> (show)</a> <!-- show-methods passed suite-default -->
                     </span>
-                    <div class="method-list-content passed suite-Default_suite">
+                    <div class="method-list-content passed suite-default">
                       <span>
                         <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="com.placepass.marriottMoments.tests.TestClass1" hash-for-method="tc1_verifyDestinationPageNavigation">tc1_verifyDestinationPageNavigation</a> <!-- method navigator-link -->
+                        <a href="#" class="method navigator-link" panel-name="suite-default" title="com.placepass.marriottMoments.tests.TestClass1" hash-for-method="tc0_verifyAllLinks">tc0_verifyAllLinks</a> <!-- method navigator-link -->
                       </span>
                       <br/>
-                    </div> <!-- method-list-content passed suite-Default_suite -->
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-default" title="com.placepass.marriottMoments.tests.TestClass1" hash-for-method="tc1_verifyDestinationPageNavigation">tc1_verifyDestinationPageNavigation</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-default" title="com.placepass.marriottMoments.tests.TestClass1" hash-for-method="tc2_verifyDestinationSearch">tc2_verifyDestinationSearch</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-default" title="com.placepass.marriottMoments.tests.TestClass1" hash-for-method="tc3_verifyDestinationSearch">tc3_verifyDestinationSearch</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-default" title="com.placepass.marriottMoments.tests.TestClass1" hash-for-method="tc5_maxPriceValidation">tc5_maxPriceValidation</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-default" title="com.placepass.marriottMoments.tests.TestClass1" hash-for-method="tc6_BookCalenderShouldApper">tc6_BookCalenderShouldApper</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-default" title="com.placepass.marriottMoments.tests.TestClass1" hash-for-method="tc7_BookWith1Guest">tc7_BookWith1Guest</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-default" title="com.placepass.marriottMoments.tests.TestClass1" hash-for-method="tc7_BookWithOutPayentInfo">tc7_BookWithOutPayentInfo</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content passed suite-default -->
                   </li>
                 </ul>
               </div> <!-- suite-section-content -->
@@ -116,13 +165,44 @@
     </div> <!-- navigator-root -->
     <div class="wrapper">
       <div class="main-panel-root">
-        <div panel-name="suite-Default_suite" class="panel Default_suite">
-          <div class="suite-Default_suite-class-passed">
+        <div panel-name="suite-default" class="panel default">
+          <div class="suite-default-class-failed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="failed.png"/>
+              <span class="class-name">com.placepass.marriottMoments.tests.TestClass1</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="tc4_verifyAavilabityDates">
+                  </a> <!-- tc4_verifyAavilabityDates -->
+                  <span class="method-name">tc4_verifyAavilabityDates</span>
+                  <div class="stack-trace">java.lang.AssertionError: expected [true] but found [false]
+	at com.placepass.marriottMoments.pages.BookPage.verifyAvailability(BookPage.java:65)
+	at com.placepass.marriottMoments.tests.TestClass1.tc4_verifyAavilabityDates(TestClass1.java:56)
+... Removed 29 stack frames
+</div> <!-- stack-trace -->
+                  <em>
+(TC_TA_12)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-default-class-failed -->
+          <div class="suite-default-class-passed">
             <div class="main-panel-header rounded-window-top">
               <img src="passed.png"/>
               <span class="class-name">com.placepass.marriottMoments.tests.TestClass1</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="tc0_verifyAllLinks">
+                  </a> <!-- tc0_verifyAllLinks -->
+                  <span class="method-name">tc0_verifyAllLinks</span>
+                  <em>
+(TC_TA_Nav)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
                   <a name="tc1_verifyDestinationPageNavigation">
@@ -132,115 +212,185 @@
 (TC_TA_001)                  </em>
                 </div> <!-- method-content -->
               </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="tc2_verifyDestinationSearch">
+                  </a> <!-- tc2_verifyDestinationSearch -->
+                  <span class="method-name">tc2_verifyDestinationSearch</span>
+                  <em>
+(TC_TA_007)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="tc3_verifyDestinationSearch">
+                  </a> <!-- tc3_verifyDestinationSearch -->
+                  <span class="method-name">tc3_verifyDestinationSearch</span>
+                  <em>
+(TC_TA_009)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="tc5_maxPriceValidation">
+                  </a> <!-- tc5_maxPriceValidation -->
+                  <span class="method-name">tc5_maxPriceValidation</span>
+                  <em>
+(TC_TA_13)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="tc6_BookCalenderShouldApper">
+                  </a> <!-- tc6_BookCalenderShouldApper -->
+                  <span class="method-name">tc6_BookCalenderShouldApper</span>
+                  <em>
+(TC_TA_25)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="tc7_BookWith1Guest">
+                  </a> <!-- tc7_BookWith1Guest -->
+                  <span class="method-name">tc7_BookWith1Guest</span>
+                  <em>
+(TC_TA_36)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="tc7_BookWithOutPayentInfo">
+                  </a> <!-- tc7_BookWithOutPayentInfo -->
+                  <span class="method-name">tc7_BookWithOutPayentInfo</span>
+                  <em>
+(TC_TA_34)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-Default_suite-class-passed -->
-        </div> <!-- panel Default_suite -->
-        <div panel-name="test-xml-Default_suite" class="panel">
+          </div> <!-- suite-default-class-passed -->
+        </div> <!-- panel default -->
+        <div panel-name="test-xml-default" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\neeli\AppData\Local\Temp\testng-eclipse-1421563418\testng-customsuite.xml</span>
+            <span class="header-content">C:\Users\neeli\Documents\SeleniumFW_new\marriottMoments\testng.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;!DOCTYPE suite SYSTEM &quot;http://testng.org/testng-1.0.dtd&quot;&gt;
-&lt;suite guice-stage=&quot;DEVELOPMENT&quot; name=&quot;Default suite&quot;&gt;
-  &lt;test verbose=&quot;2&quot; name=&quot;Default test&quot;&gt;
+&lt;suite guice-stage=&quot;DEVELOPMENT&quot; name=&quot;default&quot;&gt;
+  &lt;listeners&gt;
+    &lt;listener class-name=&quot;com.placepass.marriottMoments.utils.ScreenshotListener&quot;/&gt;
+  &lt;/listeners&gt;
+  &lt;test name=&quot;Regression1&quot; preserve-order=&quot;false&quot;&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;com.placepass.marriottMoments.tests.TestClass1&quot;&gt;
-        &lt;methods&gt;
-          &lt;include name=&quot;tc1_verifyDestinationPageNavigation&quot;/&gt;
-        &lt;/methods&gt;
-      &lt;/class&gt; &lt;!-- com.placepass.marriottMoments.tests.TestClass1 --&gt;
+      &lt;class name=&quot;com.placepass.marriottMoments.tests.TestClass1&quot;/&gt;
     &lt;/classes&gt;
-  &lt;/test&gt; &lt;!-- Default test --&gt;
-&lt;/suite&gt; &lt;!-- Default suite --&gt;
+  &lt;/test&gt; &lt;!-- Regression1 --&gt;
+&lt;/suite&gt; &lt;!-- default --&gt;
             </pre>
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
-        <div panel-name="testlist-Default_suite" class="panel">
+        <div panel-name="testlist-default" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">Tests for Default suite</span>
+            <span class="header-content">Tests for default</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <ul>
               <li>
-                <span class="test-name">Default test (1 class)</span>
+                <span class="test-name">Regression1 (1 class)</span>
               </li>
             </ul>
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
-        <div panel-name="group-Default_suite" class="panel">
+        <div panel-name="group-default" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">Groups for Default suite</span>
+            <span class="header-content">Groups for default</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
-        <div panel-name="times-Default_suite" class="panel">
+        <div panel-name="times-default" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">Times for Default suite</span>
+            <span class="header-content">Times for default</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="times-div">
               <script type="text/javascript">
-suiteTableInitFunctions.push('tableData_Default_suite');
-function tableData_Default_suite() {
+suiteTableInitFunctions.push('tableData_default');
+function tableData_default() {
 var data = new google.visualization.DataTable();
 data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(1);
+data.addRows(9);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'tc1_verifyDestinationPageNavigation')
+data.setCell(0, 1, 'tc4_verifyAavilabityDates')
 data.setCell(0, 2, 'com.placepass.marriottMoments.tests.TestClass1')
-data.setCell(0, 3, 8639);
-window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
+data.setCell(0, 3, 93981);
+data.setCell(1, 0, 1)
+data.setCell(1, 1, 'tc7_BookWith1Guest')
+data.setCell(1, 2, 'com.placepass.marriottMoments.tests.TestClass1')
+data.setCell(1, 3, 91837);
+data.setCell(2, 0, 2)
+data.setCell(2, 1, 'tc7_BookWithOutPayentInfo')
+data.setCell(2, 2, 'com.placepass.marriottMoments.tests.TestClass1')
+data.setCell(2, 3, 91730);
+data.setCell(3, 0, 3)
+data.setCell(3, 1, 'tc6_BookCalenderShouldApper')
+data.setCell(3, 2, 'com.placepass.marriottMoments.tests.TestClass1')
+data.setCell(3, 3, 64104);
+data.setCell(4, 0, 4)
+data.setCell(4, 1, 'tc2_verifyDestinationSearch')
+data.setCell(4, 2, 'com.placepass.marriottMoments.tests.TestClass1')
+data.setCell(4, 3, 16980);
+data.setCell(5, 0, 5)
+data.setCell(5, 1, 'tc5_maxPriceValidation')
+data.setCell(5, 2, 'com.placepass.marriottMoments.tests.TestClass1')
+data.setCell(5, 3, 14178);
+data.setCell(6, 0, 6)
+data.setCell(6, 1, 'tc3_verifyDestinationSearch')
+data.setCell(6, 2, 'com.placepass.marriottMoments.tests.TestClass1')
+data.setCell(6, 3, 13618);
+data.setCell(7, 0, 7)
+data.setCell(7, 1, 'tc0_verifyAllLinks')
+data.setCell(7, 2, 'com.placepass.marriottMoments.tests.TestClass1')
+data.setCell(7, 3, 10031);
+data.setCell(8, 0, 8)
+data.setCell(8, 1, 'tc1_verifyDestinationPageNavigation')
+data.setCell(8, 2, 'com.placepass.marriottMoments.tests.TestClass1')
+data.setCell(8, 3, 3130);
+window.suiteTableData['default']= { tableData: data, tableDiv: 'times-div-default'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 8 seconds</span>
-              <div id="times-div-Default_suite">
-              </div> <!-- times-div-Default_suite -->
+              <span class="suite-total-time">Total running time: 6 minutes</span>
+              <div id="times-div-default">
+              </div> <!-- times-div-default -->
             </div> <!-- times-div -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
-        <div panel-name="reporter-Default_suite" class="panel">
+        <div panel-name="reporter-default" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">Reporter output for Default suite</span>
+            <span class="header-content">Reporter output for default</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="reporter-method-div">
+              <span class="reporter-method-name">tc4_verifyAavilabityDates</span>
+              <div class="reporter-method-output-div">
+                <span class="reporter-method-output"><a href='C:\Users\neeli\Documents\SeleniumFW_new\marriottMoments\screenshots\tc4_verifyAavilabityDates_13_08_2018_10_25_30.png'> <img src='C:\Users\neeli\Documents\SeleniumFW_new\marriottMoments\screenshots\tc4_verifyAavilabityDates_13_08_2018_10_25_30.png' height='100' width='100'/> </a></span>
+              </div> <!-- reporter-method-output-div -->
+            </div> <!-- reporter-method-div -->
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="ignored-methods-default" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">0 ignored methods</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
-        <div panel-name="ignored-methods-Default_suite" class="panel">
-          <div class="main-panel-header rounded-window-top">
-            <span class="header-content">8 ignored methods</span>
-          </div> <!-- main-panel-header rounded-window-top -->
-          <div class="main-panel-content rounded-window-bottom">
-            <div class="ignored-class-div">
-              <span class="ignored-class-name">com.placepass.marriottMoments.tests.TestClass1</span>
-              <div class="ignored-methods-div">
-                <span class="ignored-method-name">tc0_verifyAllLinks</span>
-                <br/>
-                <span class="ignored-method-name">tc2_verifyDestinationSearch</span>
-                <br/>
-                <span class="ignored-method-name">tc3_verifyDestinationSearch</span>
-                <br/>
-                <span class="ignored-method-name">tc6_BookCalenderShouldApper</span>
-                <br/>
-                <span class="ignored-method-name">tc7_BookWith1Guest</span>
-                <br/>
-                <span class="ignored-method-name">tc7_BookWithOutPayentInfo</span>
-                <br/>
-                <span class="ignored-method-name">tc5_maxPriceValidation</span>
-                <br/>
-                <span class="ignored-method-name">tc4_verifyAavilabityDates</span>
-                <br/>
-              </div> <!-- ignored-methods-div -->
-            </div> <!-- ignored-class-div -->
-          </div> <!-- main-panel-content rounded-window-bottom -->
-        </div> <!-- panel -->
-        <div panel-name="chronological-Default_suite" class="panel">
+        <div panel-name="chronological-default" class="panel">
           <div class="main-panel-header rounded-window-top">
             <span class="header-content">Methods in chronological order</span>
           </div> <!-- main-panel-header rounded-window-top -->
@@ -252,12 +402,110 @@ return data;
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
-                <span class="method-name">tc1_verifyDestinationPageNavigation</span>
-                <span class="method-start">9414 ms</span>
+                <span class="method-name">tc0_verifyAllLinks</span>
+                <span class="method-start">6975 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">stopSession</span>
-                <span class="method-start">18057 ms</span>
+                <span class="method-start">17006 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">startSession</span>
+                <span class="method-start">18765 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">tc1_verifyDestinationPageNavigation</span>
+                <span class="method-start">25209 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">stopSession</span>
+                <span class="method-start">28340 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">startSession</span>
+                <span class="method-start">29238 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">tc2_verifyDestinationSearch</span>
+                <span class="method-start">35659 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">stopSession</span>
+                <span class="method-start">52641 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">startSession</span>
+                <span class="method-start">53497 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">tc3_verifyDestinationSearch</span>
+                <span class="method-start">59693 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">stopSession</span>
+                <span class="method-start">73313 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">startSession</span>
+                <span class="method-start">74146 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">tc4_verifyAavilabityDates</span>
+                <span class="method-start">80381 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">stopSession</span>
+                <span class="method-start">174958 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">startSession</span>
+                <span class="method-start">175884 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">tc5_maxPriceValidation</span>
+                <span class="method-start">182303 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">stopSession</span>
+                <span class="method-start">196482 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">startSession</span>
+                <span class="method-start">197387 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">tc6_BookCalenderShouldApper</span>
+                <span class="method-start">203284 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">stopSession</span>
+                <span class="method-start">267389 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">startSession</span>
+                <span class="method-start">268325 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">tc7_BookWith1Guest</span>
+                <span class="method-start">274789 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">stopSession</span>
+                <span class="method-start">366627 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">startSession</span>
+                <span class="method-start">367700 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">tc7_BookWithOutPayentInfo</span>
+                <span class="method-start">373805 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">stopSession</span>
+                <span class="method-start">465535 ms</span>
               </div> <!-- configuration-method after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
