@@ -25,9 +25,11 @@ public class BaseTest {
 
 	public String getProperty(String configItemName) {
 		try {
+			System.out.println(">>>>>"+user_dir + File.separator + "selenium.properties");
 			FileInputStream f = new FileInputStream(user_dir + File.separator + "selenium.properties");
 			prop.load(f);
 		} catch (Exception e) {
+			System.out.println(">>>>>>"+e.getStackTrace());
 			e.getStackTrace();
 		}
 		return prop.getProperty(configItemName);
@@ -35,6 +37,9 @@ public class BaseTest {
 
 	@BeforeMethod
 	public void startSession() {
+		
+		//URL gridUrl = new URL(getProperty("gridHubURL"));
+		
 		if (getProperty("remoteWebdriver").equalsIgnoreCase("false")) {
 			if (getProperty("browser").equalsIgnoreCase("FF")) {
 				System.setProperty("webdriver.gecko.driver", user_dir + "\\drivers\\geckodriver.exe");
