@@ -1,5 +1,6 @@
 package com.placepass.marriottMoments.driver;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -17,7 +18,6 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
- 
 public class BaseTest {
 	public static WebDriver driver;
 	public static String user_dir = System.getProperty("user.dir");
@@ -25,7 +25,7 @@ public class BaseTest {
 
 	public String getProperty(String configItemName) {
 		try {
-			FileInputStream f = new FileInputStream(user_dir + "\\selenium.properties");
+			FileInputStream f = new FileInputStream(user_dir + File.separator + "selenium.properties");
 			prop.load(f);
 		} catch (Exception e) {
 			e.getStackTrace();
@@ -40,7 +40,8 @@ public class BaseTest {
 				System.setProperty("webdriver.gecko.driver", user_dir + "\\drivers\\geckodriver.exe");
 				driver = new FirefoxDriver();
 			} else if (getProperty("browser").equalsIgnoreCase("chrome")) {
-				System.setProperty("webdriver.chrome.driver", user_dir + "\\drivers\\chromedriver.exe");
+				System.setProperty("webdriver.chrome.driver",
+						user_dir + File.separator + "drivers" + File.separator + "chromedriver.exe");
 				driver = new ChromeDriver();
 			} else if (getProperty("browser").equalsIgnoreCase("IE")) {
 				System.setProperty("webdriver.ie.driver", user_dir + "\\drivers\\IEDriverServer.exe");
@@ -63,7 +64,8 @@ public class BaseTest {
 				dc.setCapability(FirefoxDriver.PROFILE, fp);
 				driver = new RemoteWebDriver(gridUrl, dc);
 			} else if (getProperty("browser").equalsIgnoreCase("CHROME")) {
-				System.setProperty("webdriver.chrome.driver", user_dir + "\\drivers\\chromedriver.exe");
+				System.setProperty("webdriver.chrome.driver",
+						user_dir + File.separator + "drivers" + File.separator + "chromedriver.exe");
 				ChromeOptions options = new ChromeOptions();
 				// set some options
 				options.addArguments("auth-server-whitelist='https://marriott-stage.placepass.com/'");
