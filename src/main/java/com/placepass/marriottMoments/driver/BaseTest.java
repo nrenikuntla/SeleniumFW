@@ -46,7 +46,7 @@ public class BaseTest {
 				driver = new FirefoxDriver();
 			} else if (getProperty("browser").equalsIgnoreCase("chrome")) {
 				System.setProperty("webdriver.chrome.driver",
-						user_dir + File.separator + "drivers" + File.separator + "chromedriver.exe");
+						user_dir + File.separator + "drivers" + File.separator + "chromedriver_linux.exe");
 				driver = new ChromeDriver();
 			} else if (getProperty("browser").equalsIgnoreCase("IE")) {
 				System.setProperty("webdriver.ie.driver", user_dir + "\\drivers\\IEDriverServer.exe");
@@ -70,7 +70,7 @@ public class BaseTest {
 				driver = new RemoteWebDriver(gridUrl, dc);
 			} else if (getProperty("browser").equalsIgnoreCase("CHROME")) {
 				System.setProperty("webdriver.chrome.driver",
-						user_dir + File.separator + "drivers" + File.separator + "chromedriver.exe");
+						user_dir + File.separator + "drivers" + File.separator + "chromedriver_linux.exe");
 				ChromeOptions options = new ChromeOptions();
 				// set some options
 				options.addArguments("auth-server-whitelist='https://marriott-stage.placepass.com/'");
