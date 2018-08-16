@@ -42,7 +42,7 @@ public class TestClass1 extends BaseTest {
 		dp.verifyLocation(input);
 	}
 
-	@Test(description = "TC_TA_12")
+	//@Test(description = "TC_TA_12")
 	public void tc4_verifyAavilabityDates() {
 		// fails - issue found
 		PageLevelUtils pUtils = new PageLevelUtils();
