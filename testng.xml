@@ -5,11 +5,16 @@
 		<!-- <listener class-name="com.placepass.marriottMoments.utils.ScreenshotListener" 
 			/> -->
 		<listener class-name="org.uncommons.reportng.HTMLReporter" />
-		<listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
+		<listener
+			class-name="org.uncommons.reportng.JUnitXMLReporter" />
 	</listeners>
 	<test name="Regression1" preserve-order="false">
 		<classes>
-			<class name="com.placepass.marriottMoments.tests.TestClass1" />
+			<class name="com.placepass.marriottMoments.tests.TestClass1">
+				<methods>
+					<include name="tc5_maxPriceValidation"></include>
+				</methods>
+			</class>
 		</classes>
 	</test>
 </suite>
