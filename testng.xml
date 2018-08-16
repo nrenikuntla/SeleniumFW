@@ -9,9 +9,9 @@
 	<test name="Regression1" preserve-order="false">
 		<classes>
 			<class name="com.placepass.marriottMoments.tests.TestClass1">
-				<methods>
+				<!-- <methods>
 					<include name="tc5_maxPriceValidation"></include>
-				</methods>
+				</methods> -->
 			</class>
 		</classes>
 	</test>
