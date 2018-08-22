@@ -8,10 +8,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import com.placepass.marriottMoments.utils.DriverUtils;
-import com.placepass.marriottMoments.utils.PageLevelUtils;
-import com.placepass.marriottMoments.utils.WaitUtil;
-
+ 
 
 public class SelectOptionPage extends Page {
 
@@ -46,5 +43,27 @@ public class SelectOptionPage extends Page {
 		else if (checkOut.size() > 0)
 			checkOut.get(0).click();
 	}
-
+	
+	public void selectFirstOption(){
+		sleep(5);
+		options.get(0).click();
+	}
+	
+	@FindBy(xpath="//h1[@class='contrast-header']")
+	WebElement selectOptionsText;
+	
+	public void verifySelectOptionsPage(){
+		System.out.println("Select options Text::"+selectOptionsText.getText());
+		Assert.assertTrue(selectOptionsText.getText().equals("Select an Option"));
+	}
+	
+	@FindBy(className="experiences-order-option-headline")
+	List<WebElement> orderOptions;
+	
+	public void verifyDate(String date){
+		Assert.assertTrue(orderOptions.get(0).getText().contains(date));
+	}
+	
+	
+	
 }

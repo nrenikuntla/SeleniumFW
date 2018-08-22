@@ -3,11 +3,13 @@ package com.placepass.marriottMoments.tests;
 import org.testng.annotations.Test;
 
 import com.placepass.marriottMoments.driver.BaseTest;
-import com.placepass.marriottMoments.pages.*;
+import com.placepass.marriottMoments.pages.BookPage;
+import com.placepass.marriottMoments.pages.DestinationPage;
+import com.placepass.marriottMoments.pages.HomePage;
+import com.placepass.marriottMoments.pages.ReviewAndBookPage;
+import com.placepass.marriottMoments.pages.SelectOptionPage;
 import com.placepass.marriottMoments.utils.DateUtils;
-import com.placepass.marriottMoments.utils.DriverUtils;
 import com.placepass.marriottMoments.utils.PageLevelUtils;
-import com.placepass.marriottMoments.utils.WaitUtil;
 
  
 
@@ -42,7 +44,7 @@ public class TestClass1 extends BaseTest {
 		dp.verifyLocation(input);
 	}
 
-	//@Test(description = "TC_TA_12")
+	@Test(description = "TC_TA_12")
 	public void tc4_verifyAavilabityDates() {
 		// fails - issue found
 		PageLevelUtils pUtils = new PageLevelUtils();

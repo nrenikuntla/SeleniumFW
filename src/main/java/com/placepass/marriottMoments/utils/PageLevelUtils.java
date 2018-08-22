@@ -26,4 +26,8 @@ public class PageLevelUtils {
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
 
 	}
+
+	public void scrollBy(WebDriver driver, String verticalPx) {
+		((JavascriptExecutor) driver).executeScript("window.scrollBy(0," + verticalPx + ")", "");
+	}
 }

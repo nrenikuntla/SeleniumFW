@@ -2,10 +2,13 @@ package com.placepass.marriottMoments.pages;
 
 import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
@@ -13,7 +16,6 @@ import com.placepass.marriottMoments.utils.PageLevelUtils;
 import com.placepass.marriottMoments.utils.WaitUtil;
 
  
-
 public class BookPage extends Page {
 
 	private WebDriver driver;
@@ -114,4 +116,32 @@ public class BookPage extends Page {
 
 	@FindBy(xpath = "//td[not(contains(@class,'elm-datepicker--disabled'))][contains(@class,'elm-datepicker--day')]")
 	List<WebElement> enabledDatesNew;
+
+	@FindBy(xpath = "//label[@for='MAR']")
+	public WebElement marriottRewardsPointsRadioBtn;
+
+	@FindBy(xpath = "//label[@for='SPG']")
+	public WebElement starPointsRadioBtn;
+
+	public void clickOnStarPointsRadioBtn() {
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("rewards-points-toggle-option")));
+		starPointsRadioBtn.click();
+	}
+
+	@FindBy(className = "experiences-order-summary-points")
+	WebElement pointsText;
+
+	public void verifyStarPointsRadioBtn() {
+		Assert.assertTrue(pointsText.getText().contains("SPG Points"));
+	}
+
+	@FindBy(className = "product-name")
+	WebElement productName;
+
+	public void verifyProductName(String productNameStr) {
+		wait.until(ExpectedConditions.visibilityOf(productName));
+		System.out.println("Product Name is:" + productName);
+		Assert.assertEquals(productNameStr, productName.getText());
+	}
+
 }

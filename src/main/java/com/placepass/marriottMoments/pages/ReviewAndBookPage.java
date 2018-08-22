@@ -1,18 +1,17 @@
 package com.placepass.marriottMoments.pages;
 
+import static org.testng.Assert.assertEquals;
+
 import java.util.List;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import com.placepass.marriottMoments.utils.DriverUtils;
-import com.placepass.marriottMoments.utils.PageLevelUtils;
-import com.placepass.marriottMoments.utils.WaitUtil;
-
 
 public class ReviewAndBookPage extends Page {
 
@@ -100,4 +99,87 @@ public class ReviewAndBookPage extends Page {
 		Assert.assertTrue(error.getText().contains("Your card number is incomplete."), "invalid err");
 	}
 
+	@FindBy(className = "label-error")
+	WebElement cardExpiredErrorMessage;
+
+	public void verifyCardExpiredErrorMessage() {
+		System.out.println("Card Expired error message is::" + cardExpiredErrorMessage.getText());
+		Assert.assertEquals(cardExpiredErrorMessage.getText(), " Card expired. Please try with another card ");
+	}
+
+	@FindBy(xpath = "//div[@id='sticky-order-summary']//div[contains(@class,'experiences-order-summary-total-price')]")
+	WebElement totalAmt;
+
+	public void verifyTotalAmount(Double amount) {
+		Double totalAmount = getTotalAmount();
+		System.out.println("Total Amount in Review and Book page::" + totalAmount);
+		Assert.assertEquals(amount, totalAmount);
+	}
+
+	private Double getTotalAmount() {
+		String totalAmtValue = totalAmt.getText();
+		String[] split = totalAmtValue.split(" ");
+		String substring = split[0].substring(1, split[0].indexOf("\n"));
+		System.out.println("SubString::" + substring);
+		Double actualAmount = Double.valueOf(substring);
+		return actualAmount;
+	}
+
+	@FindBy(xpath = "//label[@for='activities_checkout_form_rewards_scheme_mar']")
+	public WebElement marriottRewardsPointsRadioBtn;
+
+	@FindBy(xpath = "//label[@for='activities_checkout_form_rewards_scheme_spg']")
+	public WebElement starPointsRadioBtn;
+
+	@FindBy(xpath = "//div[@id='sticky-order-summary']//span[@data-rewards-alternative='SPG']")
+	public WebElement totalEarnPointsText;
+
+	public void clickOnSPGRadioButton() {
+		starPointsRadioBtn.click();
+	}
+
+	public void verifySPGPointsToggle() {
+		Assert.assertTrue(totalEarnPointsText.isDisplayed());
+		Assert.assertTrue(totalEarnPointsText.getText().contains("SPG Points"));
+	}
+
+	@FindBy(className = "additional-information-toggle")
+	WebElement redeemCodeLink;
+
+	@FindBy(id = "activities_checkout_form_referral_code")
+	WebElement referralCode;
+
+	@FindBy(id = "activities_checkout_form_discount_code")
+	WebElement discountCode;
+
+	@FindBy(id = "apply-discount")
+	WebElement applyCodeBtn;
+
+	public void clickOnRedeemCodeLink() {
+		redeemCodeLink.click();
+		wait.until(ExpectedConditions.visibilityOf(referralCode));
+		Assert.assertTrue(referralCode.isDisplayed());
+		Assert.assertTrue(discountCode.isDisplayed());
+	}
+
+	public void enterReferralCode(String referralCodeStr) {
+		referralCode.sendKeys(referralCodeStr);
+	}
+
+	public void enterDiscountCode(String discountCodeStr) {
+		discountCode.sendKeys(discountCodeStr);
+	}
+
+	public void clickApplyCodeBtn() {
+		Assert.assertTrue(applyCodeBtn.isDisplayed());
+		applyCodeBtn.click();
+	}
+
+	@FindBy(id = "display-discount-message")
+	WebElement discountErrorMessage;
+
+	public void verifyInvalidDiscountErrorMessage() {
+		wait.until(ExpectedConditions.visibilityOf(discountErrorMessage));
+		Assert.assertEquals(discountErrorMessage.getText(), "This code was not found");
+	}
 }
