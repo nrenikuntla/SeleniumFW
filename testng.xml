@@ -7,13 +7,13 @@
 	<test name="Regression1" preserve-order="false">
 		<classes>	
 		
-		    <class name="com.placepass.marriottMoments.tests.TestClass1"/> 
-			<class name="com.placepass.marriottMoments.tests.ActivityBookingFlow"/>
+		    <class name="com.placepass.marriottMoments.tests.Others"/>
+			<!--<class name="com.placepass.marriottMoments.tests.ActivityBookingFlow"/>
 			<class name="com.placepass.marriottMoments.tests.DestinationPageCases"/>
 			<class name="com.placepass.marriottMoments.tests.HomePageCases"/>
 			<class name="com.placepass.marriottMoments.tests.Others"/>
 			<class name="com.placepass.marriottMoments.tests.SignInCases"/>
-			<class name="com.placepass.marriottMoments.tests.TestClass1"/>	 		
+			<class name="com.placepass.marriottMoments.tests.TestClass1"/>	 	-->	
 		</classes>
 	</test>
 </suite>
