@@ -7,6 +7,7 @@ import java.util.Calendar;
 public class DateUtils {
 	public static String getFormatedDate(String formatType, Calendar cal) {
 		DateFormat sdf = new SimpleDateFormat(formatType);
+		System.out.println(">>>" + cal.getTime());
 		String fromatedDateone = sdf.format(cal.getTime());
 		return fromatedDateone;
 	}
@@ -38,5 +39,4 @@ public class DateUtils {
 		cal.add(Calendar.YEAR, yearRange);
 		return cal;
 	}
-
 }

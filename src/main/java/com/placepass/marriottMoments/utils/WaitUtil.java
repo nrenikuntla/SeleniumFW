@@ -13,11 +13,9 @@ public class WaitUtil {
 
 	public static WebElement waitForElementToBeDisplayed(WebDriver driver, final WebElement element,
 			int timeOutPeriod) {
-
 		WebDriverWait webDriverWait = new WebDriverWait(driver, timeOutPeriod);
 		webDriverWait.pollingEvery(10, TimeUnit.MICROSECONDS);
 		return webDriverWait.until(new ExpectedCondition<WebElement>() {
-
 			public WebElement apply(WebDriver driver) {
 				try {
 					if (element.isDisplayed())
@@ -32,9 +30,6 @@ public class WaitUtil {
 					return null;
 				}
 			}
-
 		});
-
 	}
-
 }
