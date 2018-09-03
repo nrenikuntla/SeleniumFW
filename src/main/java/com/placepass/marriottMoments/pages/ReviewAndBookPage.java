@@ -1,7 +1,5 @@
 package com.placepass.marriottMoments.pages;
 
-import static org.testng.Assert.assertEquals;
-
 import java.util.List;
 
 import org.openqa.selenium.WebDriver;
@@ -13,25 +11,31 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import com.placepass.marriottMoments.utils.DriverUtils;
+
 public class ReviewAndBookPage extends Page {
 
 	private WebDriver driver;
 	private WebDriverWait wait;
 
 	public ReviewAndBookPage(WebDriver driver) {
+		System.out.println("Review And Book Page Object created");
 		this.driver = driver;
 		wait = new WebDriverWait(driver, 30);
 		PageFactory.initElements(driver, this);
 	}
 
 	@FindBy(css = "#first-name")
-	WebElement fName;
+	List<WebElement> fName;
 
 	@FindBy(css = "#last-name")
-	WebElement lName;
+	List<WebElement> lName;
 
 	@FindBy(css = "#activities_checkout_form_travelers_attributes_0_email")
 	WebElement email;
+
+	@FindBy(css = "#activities_checkout_form_travelers_attributes_0_phone_country_code")
+	WebElement countryCode;
 
 	@FindBy(css = "#activities_checkout_form_travelers_attributes_0_phone_number")
 	WebElement phone;
@@ -57,10 +61,13 @@ public class ReviewAndBookPage extends Page {
 	@FindBy(xpath = "//button[contains(text(),'Place Order')]")
 	List<WebElement> placeOrder;
 
-	public void fillCustDetails(String fn, String ln, String email_, String ph, String c) {
-		fName.sendKeys(fn);
-		lName.sendKeys(ln);
+	public void fillCustDetails(String fn, String ln, String email_, String cc, String ph, String c) {
+		for (WebElement ele : fName)
+			ele.sendKeys(fn);
+		for (WebElement ele : lName)
+			ele.sendKeys(ln);
 		email.sendKeys(email_);
+		new Select(countryCode).selectByValue(cc);
 		phone.sendKeys(ph);
 		new Select(country).selectByVisibleText(c);
 	}
@@ -88,7 +95,7 @@ public class ReviewAndBookPage extends Page {
 		if (placeOrder.size() > 0)
 			placeOrder.get(0).click();
 		sleep(10);
-		System.out.println("msg>>" + error.getText());
+		// System.out.println("msg>>" + error.getText());
 	}
 
 	@FindBy(css = "#StripeCardErrors")
@@ -104,7 +111,8 @@ public class ReviewAndBookPage extends Page {
 
 	public void verifyCardExpiredErrorMessage() {
 		System.out.println("Card Expired error message is::" + cardExpiredErrorMessage.getText());
-		Assert.assertEquals(cardExpiredErrorMessage.getText(), " Card expired. Please try with another card ");
+		Assert.assertTrue(
+				cardExpiredErrorMessage.getText().contains("Please ensure that all fields are complete and correct."));
 	}
 
 	@FindBy(xpath = "//div[@id='sticky-order-summary']//div[contains(@class,'experiences-order-summary-total-price')]")
@@ -128,14 +136,17 @@ public class ReviewAndBookPage extends Page {
 	@FindBy(xpath = "//label[@for='activities_checkout_form_rewards_scheme_mar']")
 	public WebElement marriottRewardsPointsRadioBtn;
 
-	@FindBy(xpath = "//label[@for='activities_checkout_form_rewards_scheme_spg']")
+	// @FindBy(xpath =
+	// "//label[@for='activities_checkout_form_rewards_scheme_spg']")
+	@FindBy(id = "activities_checkout_form_rewards_scheme_spg")
 	public WebElement starPointsRadioBtn;
 
 	@FindBy(xpath = "//div[@id='sticky-order-summary']//span[@data-rewards-alternative='SPG']")
 	public WebElement totalEarnPointsText;
 
 	public void clickOnSPGRadioButton() {
-		starPointsRadioBtn.click();
+		DriverUtils.jsClick(driver, starPointsRadioBtn);
+		// starPointsRadioBtn.click();
 	}
 
 	public void verifySPGPointsToggle() {
@@ -143,7 +154,8 @@ public class ReviewAndBookPage extends Page {
 		Assert.assertTrue(totalEarnPointsText.getText().contains("SPG Points"));
 	}
 
-	@FindBy(className = "additional-information-toggle")
+	// @FindBy(className = "additional-information-toggle")
+	@FindBy(css = "#discount-code a")
 	WebElement redeemCodeLink;
 
 	@FindBy(id = "activities_checkout_form_referral_code")
@@ -156,7 +168,8 @@ public class ReviewAndBookPage extends Page {
 	WebElement applyCodeBtn;
 
 	public void clickOnRedeemCodeLink() {
-		redeemCodeLink.click();
+		// redeemCodeLink.click();
+		DriverUtils.jsClick(driver, redeemCodeLink);
 		wait.until(ExpectedConditions.visibilityOf(referralCode));
 		Assert.assertTrue(referralCode.isDisplayed());
 		Assert.assertTrue(discountCode.isDisplayed());

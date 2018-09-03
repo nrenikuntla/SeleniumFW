@@ -11,31 +11,28 @@ public class RentalCarsPage extends Page {
 	private WebDriverWait wait;
 
 	public RentalCarsPage(WebDriver driver) {
+		System.out.println("Rental Cars Page Object created");
 		this.driver = driver;
 		wait = new WebDriverWait(driver, 30);
 		PageFactory.initElements(driver, this);
 	}
-	
-	@FindBy(id="single_location_id")
+
+	@FindBy(id = "single_location_id")
 	WebElement singleLocation;
-	
-	@FindBy(id="human-pickup-date")
+
+	@FindBy(id = "human-pickup-date")
 	WebElement pickUpDate;
-	
-	@FindBy(id="human-return-date")
+
+	@FindBy(id = "human-return-date")
 	WebElement returnDate;
-	
-	@FindBy(id="pickup_location_id")
+
+	@FindBy(id = "pickup_location_id")
 	WebElement pickupLocation;
-	
-	@FindBy(id="dropoff_location_id")
+
+	@FindBy(id = "dropoff_location_id")
 	WebElement dropOffLocation;
-	
-	
-	public void enterLocation(String location){
+
+	public void enterLocation(String location) {
 		singleLocation.sendKeys(location);
 	}
-	
-	
-
 }

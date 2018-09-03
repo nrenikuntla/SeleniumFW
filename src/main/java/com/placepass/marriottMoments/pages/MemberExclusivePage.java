@@ -15,6 +15,7 @@ public class MemberExclusivePage extends Page {
 	private WebDriverWait wait;
 
 	public MemberExclusivePage(WebDriver driver) {
+		System.out.println("Member Exclusive Page Object created");
 		this.driver = driver;
 		wait = new WebDriverWait(driver, 30);
 		PageFactory.initElements(driver, this);

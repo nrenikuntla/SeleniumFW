@@ -15,6 +15,7 @@ public class SignInPage extends Page {
 	private WebDriverWait wait;
 
 	public SignInPage(WebDriver driver) {
+		System.out.println("Sign In Page Object created");
 		this.driver = driver;
 		wait = new WebDriverWait(driver, 30);
 		PageFactory.initElements(driver, this);
@@ -36,7 +37,7 @@ public class SignInPage extends Page {
 	@FindBy(xpath = "//button[text()='Sign In']")
 	WebElement singInBtn;
 
-	private void enterUserId(String userIdStr) {
+	private void enterUserId(String userIdStr) {		
 		userId.sendKeys(userIdStr);
 	}
 
@@ -49,6 +50,7 @@ public class SignInPage extends Page {
 	}
 
 	public void login(String userName, String password) {
+		sleep(10);
 		enterUserId(userName);
 		enterPassword(password);
 		clickSignIn();

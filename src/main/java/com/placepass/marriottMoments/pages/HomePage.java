@@ -22,12 +22,11 @@ public class HomePage extends Page {
 	private WebDriverWait wait;
 
 	public HomePage(WebDriver driver) {
+		System.out.println("Home Page Object created");
 		this.driver = driver;
 		wait = new WebDriverWait(driver, 30);
 		PageFactory.initElements(driver, this);
 	}
-
-	// ****************************************************************************//
 
 	/*
 	 * This will return one product shelf based on the title
@@ -35,7 +34,8 @@ public class HomePage extends Page {
 	private WebElement getContainer(String title) {
 		WebElement titleElement = driver
 				.findElement(By.xpath("//div[contains(@class,'container-for-grid')]//h2[text()='" + title
-						+ "']//ancestor::div[contains(@class,'container-for-grid')]"));
+						+ "']//ancestor::div[contains(@class,'shelf-title-bar')]/.."));
+		String str = titleElement.getText();
 		return titleElement;
 	}
 
@@ -66,7 +66,8 @@ public class HomePage extends Page {
 	 * returns all the cards of a product shelf
 	 */
 	private List<WebElement> getAllShelfProducts(String title) {
-		return getContainer(title).findElements(By.xpath(".//div[@class='shelf-products']/a"));
+		List<WebElement> list = getContainer(title).findElements(By.cssSelector("a span"));
+		return getContainer(title).findElements(By.cssSelector("a span"));
 	}
 
 	/*
@@ -89,8 +90,6 @@ public class HomePage extends Page {
 		return cardElement;
 	}
 
-	// ****************************************************************************//
-
 	@FindBy(xpath = "//a[contains(@class,'experience-card-destination')]")
 	List<WebElement> destinationsWeLoveList;
 
@@ -100,6 +99,7 @@ public class HomePage extends Page {
 	}
 
 	public void clickDestinationWeLove(String city) {
+		System.out.println("Cick on Destinatin card:" + city + ", under Destination We love panel");
 		getDestinationWeLove(city).click();
 	}
 
@@ -110,13 +110,16 @@ public class HomePage extends Page {
 		RestUtil ru = new RestUtil();
 		for (WebElement ele : allLinks) {
 			String href = ele.getAttribute("href");
-			System.out.println("verifying for : " + ele.getText() + "  link");
-			System.out.println(href);
+
 			// if (href != "" && !href.contains("/N/A") && !href.contains("javascript")) {
 			if (href.contains("http")) {
-				int respCode = ru.get(href);
-				Assert.assertTrue(respCode == 200);
-				System.out.println("------------------------");
+				if (!href.contains("/N/A") && !href.contains("javascript") && !href.contains("googleapis")) {
+					System.out.println("verifying for : " + ele.getText() + "  link");
+					System.out.println(href);
+					int respCode = ru.get(href);
+					Assert.assertTrue(respCode == 200);
+					System.out.println("------------------------");
+				}
 			}
 		}
 	}
@@ -173,69 +176,56 @@ public class HomePage extends Page {
 		memberExclusiveLink.click();
 	}
 
-	public void clickHertzRentals(String itemIndex) {
-		List<WebElement> hertzRentals = getAllShelfProducts("Earn Marriott Rewards Points on Hertz Rentals");
-		hertzRentals.get(Integer.parseInt(itemIndex)).click();
-		/*
-		 * driver.findElement(By.
-		 * xpath("//a[contains(@class,'experience-card cars-experience-card')][" +
-		 * itemIndex + "]")) .click();
-		 */
+	public void clickHertzRentals(int itemIndex) {
+		List<WebElement> hertzRentals = getAllShelfProducts("Earn Marriott Rewards Points on Hertz Rentals"); 
+		DriverUtils.jsClick(driver, hertzRentals.get(itemIndex-1));
 	}
 
 	public void verifyNavigateToRentalCarsPage() {
 		verifyUrl("cars");
 	}
 
-	public void verifyUrl(String subStringURL) {
+	private void verifyUrl(String subStringURL) {
+		System.out.println("Verifying url:" + subStringURL);
 		DriverUtils.switchToLatestWindow(driver);
 		sleep(2);
 		String url = driver.getCurrentUrl();
 		Assert.assertTrue(url.contains(subStringURL), "not redirected to correct url");
 	}
 
-	public void clickExclusiveSPG(String itemIndex) {
+	public void clickExclusiveSPG(int index) {
+		List<WebElement> list = new ArrayList<WebElement>();
 		List<WebElement> exclusiveMRAndSPG = getAllShelfProducts(
 				"Exclusive SPG and Marriott Rewards Member Experiences");
-		List<WebElement> exclusiveSPG = new ArrayList<WebElement>();
-		for (WebElement cards : exclusiveMRAndSPG) {
-			if (cards.getAttribute("class").contains("experience-card-exclusive-spg")) {
-				exclusiveSPG.add(cards);
+		for (WebElement ele : exclusiveMRAndSPG) {
+			if (ele.getText().contains("SPG Member Exclusive")) {
+				list.add(ele);
 			}
 		}
-
-		exclusiveSPG.get(Integer.parseInt(itemIndex) - 1).click();
-		/*
-		 * driver.findElement(By.xpath(
-		 * "//a[contains(@class,'experience-card-exclusive-spg')][" + itemIndex + "]"))
-		 * .click();
-		 */
+		DriverUtils.jsClick(driver, list.get(index - 1));
+		System.out.println("clicked on :" + index + ", Car.");
 	}
 
-	public void verifyExclusiveSPGNavigation() {
-		verifyUrl("auction.starwoodhotels");
+	public void verifyMemberExclusiveSPGNavigation() {
+		verifyUrl("item");
 	}
 
-	public void clickMarriatrewards(String itemIndex) {
+	public void clickMarriatrewards(int index) {
+		List<WebElement> list = new ArrayList<WebElement>();
 		List<WebElement> exclusiveMRAndSPG = getAllShelfProducts(
 				"Exclusive SPG and Marriott Rewards Member Experiences");
-		List<WebElement> exclusiveMR = new ArrayList<WebElement>();
-		for (WebElement cards : exclusiveMRAndSPG) {
-			if (cards.getAttribute("class").contains("experience-card-exclusive-mar")) {
-				exclusiveMR.add(cards);
+		for (WebElement ele : exclusiveMRAndSPG) {
+			String str = ele.getText();
+			if (ele.getText().equalsIgnoreCase("Marriott Rewards Exclusive")) {
+				list.add(ele);
 			}
 		}
-		exclusiveMR.get(Integer.parseInt(itemIndex) - 1).click();
-
-		/*
-		 * driver.findElement(By.xpath(
-		 * "//a[contains(@class,'experience-card-exclusive-mar')][" + itemIndex + "]"))
-		 * .click();
-		 */
+		DriverUtils.jsClick(driver, list.get(index - 1));
+		System.out.println("clicked on :" + index + ", Car.");
 	}
 
 	public void verifyMarriotrewardsNavigation() {
-		verifyUrl("moments.marriottrewards.com");
+		verifyUrl("item");
 	}
 
 	@FindBy(xpath = "//*[@id='6a1369c7-8567-4fad-b5e9-dd8a6b669f85']//a[@class = 'see-all-link']")
@@ -251,8 +241,6 @@ public class HomePage extends Page {
 		sleep(5);
 		DestinationPage dp = new DestinationPage(driver);
 		dp.verifyCity(cityName);
-		// System.out.println(dp.activity.getText());
-
 	}
 
 	@FindBy(linkText = "Sign In")

@@ -1,11 +1,10 @@
 package com.placepass.marriottMoments.pages;
 
-import static org.testng.Assert.assertEquals;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -24,6 +23,7 @@ public class DestinationPage extends Page {
 	private WebDriverWait wait;
 
 	public DestinationPage(WebDriver driver) {
+		System.out.println("Destination Page Object created");
 		this.driver = driver;
 		wait = new WebDriverWait(driver, 30);
 		PageFactory.initElements(driver, this);
@@ -33,6 +33,7 @@ public class DestinationPage extends Page {
 	WebElement headder;
 
 	public void verifyCity(String city) {
+		System.out.println("Verify city:" + city + " @ Destination page");
 		WaitUtil.waitForElementToBeDisplayed(driver, headder, 60);
 		Assert.assertEquals(headder.getText(), city);
 	}
@@ -68,8 +69,8 @@ public class DestinationPage extends Page {
 	public void enterPriceFilter(int price) {
 		maxPriceTextBox.clear();
 		maxPriceTextBox.sendKeys(price + "");
-		keyWordSearchTextBox.click();
-		sleep(10);
+		maxPriceTextBox.sendKeys(Keys.TAB);
+		sleep(15);
 	}
 
 	public void verifyPriceFilter(int price) {
@@ -77,6 +78,19 @@ public class DestinationPage extends Page {
 			String p = ele.getText().replace("$", "").replace("USD", "");
 			int i = Integer.parseInt(p);
 			Assert.assertTrue(i <= price);
+		}
+	}
+
+	public void verifyContent(String[] text) {
+		allproducts.get(0).click();
+		DriverUtils.switchToLatestWindow(driver);
+		for (String s : text) {
+			String textToCheck = "";
+			if (s.contains("Bik"))
+				textToCheck = "bike";
+			else if (s.contains("well"))
+				textToCheck = "spa";
+			Assert.assertTrue(driver.getPageSource().contains(textToCheck));
 		}
 	}
 
@@ -105,24 +119,40 @@ public class DestinationPage extends Page {
 		sleep(5);
 	}
 
-	public void enterDate(String fromDate, String toDate) {
+	@FindBy(id = "start-date")
+	WebElement fromDate;
+
+	@FindBy(id = "end-date")
+	WebElement toDate;
+
+	@FindBy(css = "button i.icon-chevron-right")
+	WebElement nextMonthButton;
+
+	public void enterDate(int nextMonth, String from, String to,int price) {
 		startDateTextBox.click();
 		sleep(3);
-		selectDate(fromDate.split("-")[1]);
+		for (int i = 1; i <= nextMonth; i++) {
+			sleep(2);
+			nextMonthButton.click();
+			sleep(2);
+		}
+		selectDate(from.split("-")[1]);
 		sleep(3);
-		selectDate(toDate.split("-")[1]);
+		selectDate(to.split("-")[1]);
 		sleep(3);
-		new PageLevelUtils().bringElementInView(driver, calDoneButton);
-		calDoneButton.click();
-		sleep(5);
+		// fromDate.sendKeys(from);
+		// toDate.sendKeys(to);
+		DriverUtils.jsClick(driver, calDoneButton);
+		enterPriceFilter(price);
+		
 	}
 
 	@FindBy(xpath = "//div[not(contains(@class,'CalendarMonthGrid_month__hidden'))][contains(@class,'CalendarMonthGrid_month__horizontal')]//td[contains(@class,'CalendarDay__default_2')]")
 	List<WebElement> enabledDates;
 
-	public String chooseProduct(String fromDate, String toDate) {
+	public String chooseProduct(int nextMonth, String fromDate, String toDate,int price) {
 		String oldWindow = driver.getWindowHandle();
-		enterDate(fromDate, toDate);
+		enterDate(nextMonth, fromDate, toDate, price);
 		allproducts.get(0).click();
 		DriverUtils.switchToLatestWindow(driver);
 		sleep(15);
@@ -133,7 +163,7 @@ public class DestinationPage extends Page {
 		String text = Integer.parseInt(s) < 10 ? s.replace("0", "") : s;
 		for (WebElement ele : enabledDates) {
 			if (ele.getText().contentEquals(text)) {
-				ele.click();
+				DriverUtils.jsClick(driver, ele);
 				break;
 			}
 		}
@@ -147,7 +177,9 @@ public class DestinationPage extends Page {
 		for (String activity : activities) {
 			WebElement ele = driver.findElement(By.xpath("//input[@value='" + activity + "']/../label"));
 			ele.click();
+			sleep(2);
 		}
+		sleep(15);
 		// to collapse the dropdown
 		activityDropDown.click();
 	}
@@ -280,33 +312,36 @@ public class DestinationPage extends Page {
 	public void verifyKeywordSearch(String keyword) {
 		// list of cards not having the keyword
 		List<WebElement> list = new ArrayList<WebElement>();
-		int titleCount = 0;
+		int i = 0;
 		for (WebElement title : cardTitles) {
+			i = i + 1;
 			if (title.getText().contains(keyword)) {
-				titleCount++;
 			} else {
 				list.add(title);
 			}
+			if (i == 3)
+				continue;
+
 		}
-		// making sure that atleast 1 card will have the keyword
-		// Assert.assertTrue(titleCount > 0);
-		String parentWindowHandle = driver.getWindowHandle();
-		int i = 1;
-		for (WebElement card : list) {
-			if (i > 3)
-				break;
-			new PageLevelUtils().bringElementInView(driver, card);
-			card.click();
-			DriverUtils.switchToLatestWindow(driver);
-			String productName = driver.findElement(By.className("product-name")).getText();
-			boolean keywordInProductName = productName.contains(keyword) ? true : false;
-			String productDescription = driver.findElement(By.id("read-more-content")).getText();
-			boolean keywordInDescription = productDescription.contains(keyword) ? true : false;
-			Assert.assertTrue(keywordInProductName || keywordInDescription);
-			System.out.println("Title is there in either product name or product description");
-			i++;
-			driver.close();
-			driver.switchTo().window(parentWindowHandle);
+		i = 0;
+		if (list.size() == 0) {
+			Assert.assertTrue(true);
+		} else {
+			i = i + 1;
+			// making sure that atleast 1 card will have the keyword
+			// Assert.assertTrue(titleCount > 0);
+			String parentWindowHandle = driver.getWindowHandle();
+			for (WebElement card : list) {
+				new PageLevelUtils().bringElementInView(driver, card);
+				card.click();
+				DriverUtils.switchToLatestWindow(driver);
+				String source = driver.getPageSource();
+				Assert.assertTrue(source.contains(keyword));
+				driver.close();
+				driver.switchTo().window(parentWindowHandle);
+				if (i == 3)
+					continue;
+			}
 		}
 	}
 
@@ -369,8 +404,6 @@ public class DestinationPage extends Page {
 						+ cardTitle + "']"));
 		return cardElement;
 	}
-
-	// ****************************************************************************//
 
 	public String clickOnFirstMostPopularProduct() {
 		List<WebElement> allMostPopularShelfProducts = getAllShelfProducts("Most Popular");

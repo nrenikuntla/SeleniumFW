@@ -13,23 +13,22 @@ public class MyAccountPage extends Page {
 	private WebDriverWait wait;
 
 	public MyAccountPage(WebDriver driver) {
+		System.out.println("My Account Page Object created");
 		this.driver = driver;
 		wait = new WebDriverWait(driver, 30);
 		PageFactory.initElements(driver, this);
 	}
-	
-	
+
 	@FindBy(id = "accounts_edit_profile_form_first_name")
 	WebElement firstName;
-	
-	@FindBy(xpath="//button[text()='Save']")
+
+	@FindBy(xpath = "//button[text()='Save']")
 	WebElement saveBtn;
-	
-	@FindBy(className="edit-profile-saved-success")
+
+	@FindBy(className = "edit-profile-saved-success")
 	WebElement savedSuccessfullText;
-	
-	public void updateFirstName(String firstNameStr){
-		//firstName.getText();
+
+	public void updateFirstName(String firstNameStr) {
 		firstName.clear();
 		firstName.sendKeys(firstNameStr);
 		saveBtn.click();
@@ -38,7 +37,13 @@ public class MyAccountPage extends Page {
 		Assert.assertEquals(savedSuccessfullText.getText(), " Changes saved successfully!");
 		Assert.assertEquals(firstName.getText(), firstNameStr);
 	}
-	
-	
 
+	@FindBy(linkText = "Purchase History")
+	WebElement tabPurchaseHistory;
+
+	public void verifyPurchaseHistory() {
+		tabPurchaseHistory.click();
+		// click on more link
+		Assert.assertTrue(driver.getCurrentUrl().contains("purchases"));
+	}
 }

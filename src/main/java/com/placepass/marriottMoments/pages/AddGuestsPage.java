@@ -2,17 +2,14 @@ package com.placepass.marriottMoments.pages;
 
 import java.util.List;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import com.placepass.marriottMoments.utils.WaitUtil;
- 
 
 public class AddGuestsPage extends Page {
 
@@ -20,6 +17,7 @@ public class AddGuestsPage extends Page {
 	private WebDriverWait wait;
 
 	public AddGuestsPage(WebDriver driver) {
+		System.out.println("Add Guests Page Object created");
 		this.driver = driver;
 		wait = new WebDriverWait(driver, 30);
 		PageFactory.initElements(driver, this);
@@ -31,7 +29,7 @@ public class AddGuestsPage extends Page {
 	@FindBy(css = ".experiences-order-summary-total-price")
 	WebElement totalAmt;
 
-	@FindBy(className = "experiences-order-summary-points")
+	@FindBy(css = ".experiences-order-summary .experiences-order-summary-points")
 	WebElement rewardsText;
 
 	public Double increment() {
@@ -62,7 +60,7 @@ public class AddGuestsPage extends Page {
 		sleep(5);
 		editLinks.get(0).click();
 	}
-	
+
 	public void clickOnOptionsEdit() {
 		sleep(5);
 		editLinks.get(1).click();
@@ -90,21 +88,21 @@ public class AddGuestsPage extends Page {
 			date = enabledDatesNew.get(0).getText();
 			enabledDatesNew.get(0).click();
 		} else {
-			date = enabledDates.get(0).getText();;
+			date = enabledDates.get(0).getText();
+			;
 			enabledDates.get(0).click();
 		}
 		sleep(2);
 		return date;
 	}
-	
 
 	@FindBy(xpath = "//button[contains(text(),'Review & Book')]")
 	List<WebElement> reviewAndBook;
 
 	@FindBy(xpath = "//button[contains(text(),'Checkout')]")
 	List<WebElement> checkOut;
-	
-	public void clickBookOrCheckOut(){
+
+	public void clickBookOrCheckOut() {
 		if (reviewAndBook.size() > 0)
 			reviewAndBook.get(0).click();
 		else if (checkOut.size() > 0)

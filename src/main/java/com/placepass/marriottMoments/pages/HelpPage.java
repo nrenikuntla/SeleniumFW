@@ -13,6 +13,7 @@ public class HelpPage extends Page {
 	private WebDriverWait wait;
 
 	public HelpPage(WebDriver driver) {
+		System.out.println("Help Page Object created");
 		this.driver = driver;
 		wait = new WebDriverWait(driver, 30);
 		PageFactory.initElements(driver, this);

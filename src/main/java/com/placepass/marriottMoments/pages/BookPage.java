@@ -7,7 +7,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -15,19 +14,17 @@ import org.testng.Assert;
 import com.placepass.marriottMoments.utils.PageLevelUtils;
 import com.placepass.marriottMoments.utils.WaitUtil;
 
- 
 public class BookPage extends Page {
-
 	private WebDriver driver;
 	private WebDriverWait wait;
 
 	public BookPage(WebDriver driver) {
+		System.out.println("Book Page Object created");
 		this.driver = driver;
 		wait = new WebDriverWait(driver, 30);
 		PageFactory.initElements(driver, this);
 	}
 
-	// div.CalendarMonth
 	@FindBy(css = ".widget-launcher")
 	WebElement calander;
 
@@ -43,10 +40,10 @@ public class BookPage extends Page {
 	public void verifyBookingCalander() {
 		if (selectDateButton.size() > 0) {
 			selectDateButton.get(0).click();
-			WaitUtil.waitForElementToBeDisplayed(driver, datePickerPopUp, 60);
+			WaitUtil.waitForElementToBeDisplayed(driver, datePickerPopUp, 10);
 		} else {
-			WaitUtil.waitForElementToBeDisplayed(driver, calander, 60);
-			WaitUtil.waitForElementToBeDisplayed(driver, bookButton, 60);
+			WaitUtil.waitForElementToBeDisplayed(driver, calander, 10);
+			WaitUtil.waitForElementToBeDisplayed(driver, bookButton, 10);
 		}
 		Assert.assertTrue(true);
 	}
@@ -54,68 +51,95 @@ public class BookPage extends Page {
 	public void verifyAvailability(String dates) {
 		if (selectDateButton.size() > 0) {
 			selectDateButton.get(0).click();
-			WaitUtil.waitForElementToBeDisplayed(driver, datePickerPopUp, 60);
+			WaitUtil.waitForElementToBeDisplayed(driver, datePickerPopUp, 10);
 			for (String s : dates.split(",")) {
 				String txt = Integer.parseInt(s) < 10 ? s.replace("0", "") : s;
-				Assert.assertTrue(isDateFoundNew(txt));
+				Assert.assertTrue(isDateFoundInPopUp(txt));
 			}
 		} else {
-			WaitUtil.waitForElementToBeDisplayed(driver, calander, 60);
-			WaitUtil.waitForElementToBeDisplayed(driver, bookButton, 60);
+			WaitUtil.waitForElementToBeDisplayed(driver, calander, 10);
+			WaitUtil.waitForElementToBeDisplayed(driver, bookButton, 10);
+
 			for (String s : dates.split(",")) {
 				String txt = Integer.parseInt(s) < 10 ? s.replace("0", "") : s;
-				Assert.assertTrue(isDateFoundNew(txt));
+				Assert.assertTrue(isDateFoundInline(txt));
 			}
 		}
 	}
+
+	@FindBy(css = "button i.icon-chevron-left")
+	WebElement prevMonth;
+
+	@FindBy(css = "button i.icon-chevron-right")
+	WebElement nextMonthInline;
+
+	@FindBy(css = "div.elm-datepicker--prev-container a.elm-datepicker--prev")
+	WebElement prevMonth1;
+
+	@FindBy(css = "div.elm-datepicker--next-container a.elm-datepicker--next")
+	WebElement nextMonthPopUp;
 
 	public void book() {
 		if (selectDateButton.size() > 0) {
 			selectDateButton.get(0).click();
-			WaitUtil.waitForElementToBeDisplayed(driver, datePickerPopUp, 60);
-			enabledDatesNew.get(0).click();
+			WaitUtil.waitForElementToBeDisplayed(driver, datePickerPopUp, 20);
+			while (enabledDatesPopUp.size() <= 0) {
+				sleep(2);
+				nextMonthPopUp.click();
+				sleep(2);
+			}
+			enabledDatesPopUp.get(0).click();
 		} else {
-			WaitUtil.waitForElementToBeDisplayed(driver, calander, 60);
-			WaitUtil.waitForElementToBeDisplayed(driver, bookButton, 60);
-			enabledDates.get(0).click();
+			WaitUtil.waitForElementToBeDisplayed(driver, calander, 20);
+			while (enabledDatesInline.size() <= 0) {
+				sleep(2);
+				nextMonthInline.click();
+				sleep(2);
+			}
+			enabledDatesInline.get(0).click();
 			new PageLevelUtils().bringElementInView(driver, bookButton);
 			bookButton.click();
 		}
-
 		sleep(2);
 	}
 
-	public boolean isDateFound(String s) {
+	public boolean isDateFoundInPopUp(String s) {
 		boolean result = false;
-		for (WebElement ele : enabledDates) {
+		for (WebElement ele : enabledDatesPopUp) {
 			String txt = Integer.parseInt(s) < 10 ? s.replace("0", "") : s;
-			// Assert.assertTrue(isDateFoundNew(txt));
 			if (ele.getText().contentEquals(txt)) {
-				result = false;
+				result = true;
 				break;
 			}
 		}
 		return result;
 	}
 
-	public boolean isDateFoundNew(String s) {
+	public boolean isDateFoundInline(String s) {
 		boolean result = false;
-		for (WebElement ele : enabledDatesNew) {
+		for (WebElement ele : enabledDatesInline) {
 			String txt = Integer.parseInt(s) < 10 ? s.replace("0", "") : s;
-
 			if (ele.getText().contentEquals(txt)) {
-				result = false;
+				result = true;
 				break;
 			}
 		}
 		return result;
 	}
 
-	@FindBy(xpath = "//div[not(contains(@class,'CalendarMonthGrid_month__hidden'))][contains(@class,'CalendarMonthGrid_month__horizontal')]//td[contains(@class,'CalendarDay__default_2')]")
+	// $x("//td[not(contains(@class,'elm-datepicker--disabled'))][contains(@class,'elm-datepicker--day')][not(contains(@class,'elm-datepicker--other-month'))]")
+	@FindBy(xpath = "//td[not(contains(@class,'elm-datepicker--disabled'))][contains(@class,'elm-datepicker--day')][not(contains(@class,'elm-datepicker--other-month'))]")
 	List<WebElement> enabledDates;
 
-	@FindBy(xpath = "//td[not(contains(@class,'elm-datepicker--disabled'))][contains(@class,'elm-datepicker--day')]")
-	List<WebElement> enabledDatesNew;
+	// $x("//td[not(contains(@class,'elm-datepicker--disabled'))][contains(@class,'elm-datepicker--day')][not(contains(@class,'elm-datepicker--other-month'))]")
+	@FindBy(xpath = "//td[not(contains(@class,'elm-datepicker--disabled'))][contains(@class,'elm-datepicker--day')][not(contains(@class,'elm-datepicker--other-month'))]")
+	List<WebElement> enabledDatesPopUp;
+
+	@FindBy(xpath = "//td[not(contains(@class,'CalendarDay__blocked_calendar'))][contains(@class,'CalendarDay__default_2')]")
+	List<WebElement> enabledDatesNew__l;
+
+	@FindBy(xpath = "//td[not(contains(@class,'CalendarDay__blocked_calendar'))][contains(@class,'CalendarDay__default_2')]")
+	List<WebElement> enabledDatesInline;
 
 	@FindBy(xpath = "//label[@for='MAR']")
 	public WebElement marriottRewardsPointsRadioBtn;
@@ -143,5 +167,4 @@ public class BookPage extends Page {
 		System.out.println("Product Name is:" + productName);
 		Assert.assertEquals(productNameStr, productName.getText());
 	}
-
 }
