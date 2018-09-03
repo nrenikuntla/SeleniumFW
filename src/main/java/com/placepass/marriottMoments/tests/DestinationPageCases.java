@@ -1,5 +1,7 @@
 package com.placepass.marriottMoments.tests;
 
+import java.util.Calendar;
+
 import org.testng.annotations.Test;
 
 import com.placepass.marriottMoments.driver.BaseTest;
@@ -13,34 +15,66 @@ public class DestinationPageCases extends BaseTest {
 
 	@Test(description = "TC_TA_11")
 	public void tc_ta_011_verifyAavilabityDates() {
-		// This case is same as case 12 might fail some times
 		PageLevelUtils pUtils = new PageLevelUtils();
-		String dt1 = DateUtils.getFormatedDate("mm-dd-yyyy", DateUtils.getDate(0));
-		String dt2 = DateUtils.getFormatedDate("mm-dd-yyyy", DateUtils.getDate(0));
+		Calendar c = Calendar.getInstance();
+		c.add(Calendar.MONTH, 2);
+
+		String dt1 = DateUtils.getFormatedDate("MM-dd-yy", c);
+		String dt2 = DateUtils.getFormatedDate("MM-dd-yy", c);
 		HomePage hp = new HomePage(driver);
 		hp.search("musement");
 		DestinationPage dp = new DestinationPage(driver);
-		String oldWindow = dp.chooseProduct(dt1, dt2);
+		String oldWindow = dp.chooseProduct(2, dt1, dt2, 10);
 		BookPage bp = new BookPage(driver);
 		bp.verifyAvailability(dt1.split("-")[1] + "," + dt2.split("-")[1]);
 		pUtils.closeAllBrowserExcept(driver, oldWindow);
 	}
 
-	/*
-	 * @Test(description = "TC_TA_014") public void tc_ta_014_selectSingleActivity()
-	 * { HomePage hp = new HomePage(driver);
-	 * hp.clickDestinationWeLove("New York City"); DestinationPage dp = new
-	 * DestinationPage(driver); dp.selectActivityDropdown(new String[] {
-	 * "Museum Tickets", "Shows & Concerts" }); // TODO need to add verification
-	 * steps }
-	 * 
-	 * @Test(description = "TC_TA_015") public void
-	 * tc_ta_015_selectMultipleActivities() { HomePage hp = new HomePage(driver);
-	 * hp.clickDestinationWeLove("New York City"); DestinationPage dp = new
-	 * DestinationPage(driver); dp.selectActivityDropdown(new String[] {
-	 * "Museum Tickets", "Shows & Concerts" }); // TODO need to add verification
-	 * steps }
-	 */
+	@Test(description = "TC_TA_12")
+	public void tc4_verifyAavilabityDates() {
+		Calendar c = DateUtils.getDate(0);
+		c.add(Calendar.MONTH, 2);
+		PageLevelUtils pUtils = new PageLevelUtils();
+		String dt1 = DateUtils.getFormatedDate("mm-dd-yyyy", c);
+		String dt2 = DateUtils.getFormatedDate("mm-dd-yyyy", c);
+		HomePage hp = new HomePage(driver);
+		hp.search("musement");
+		DestinationPage dp = new DestinationPage(driver);
+		String oldWindow = dp.chooseProduct(2, dt1, dt2, 10);
+		BookPage bp = new BookPage(driver);
+		bp.verifyAvailability(dt1.split("-")[1] + "," + dt2.split("-")[1]);
+		pUtils.closeAllBrowserExcept(driver, oldWindow);
+	}
+
+	@Test(description = "TC_TA_13")
+	public void TC_TA_13_maxPriceValidation() {
+		HomePage hp = new HomePage(driver);
+		hp.clickDestinationWeLove("New York City");
+		DestinationPage dp = new DestinationPage(driver);
+		dp.enterPriceFilter(10);
+		dp.verifyPriceFilter(10);
+	}
+
+	@Test(description = "TC_TA_014")
+	public void tc_ta_014_selectSingleActivity() {
+		HomePage hp = new HomePage(driver);
+		hp.clickDestinationWeLove("New York City");
+		DestinationPage dp = new DestinationPage(driver);
+		String[] arr = new String[] { "Walking & Biking" };
+		dp.selectActivityDropdown(arr);
+		dp.verifyContent(arr);
+	}
+
+	@Test(description = "TC_TA_015")
+	public void tc_ta_015_selectMultipleActivities() {
+		HomePage hp = new HomePage(driver);
+		hp.clickDestinationWeLove("New York City");
+		DestinationPage dp = new DestinationPage(driver);
+
+		String[] arr = { "Walking & Biking", "Wellness" };
+		dp.selectActivityDropdown(arr);
+		dp.verifyContent(arr);
+	}
 
 	@Test(description = "TC_TA_016")
 	public void tc_ta_016_ratingFilters() {
@@ -51,26 +85,22 @@ public class DestinationPageCases extends BaseTest {
 		dp.verifyRatingFilter("4");
 	}
 
-	// This case might fail sometimes as keyword is not there in product name and
-	// product intro
 	@Test(description = "TC_TA_017")
 	public void tc_ta_017_keywordFilters() {
 		HomePage hp = new HomePage(driver);
-		hp.searchByClickingDropdown("London, United Kingdom");
+		hp.clickDestinationWeLove("New York City");
 		DestinationPage dp = new DestinationPage(driver);
-		dp.enterKeywords("London");
-		dp.verifyKeywordSearch("London");
+		dp.enterKeywords("spa");
+		dp.verifyKeywordSearch("spa");
 	}
 
-	// This case might fail sometimes as keyword is not there in product name and
-	// product intro
 	@Test(description = "TC_TA_018")
 	public void tc_ta_018_keywordDescriptionFilters() {
 		HomePage hp = new HomePage(driver);
-		hp.searchByClickingDropdown("London, United Kingdom");
+		hp.clickDestinationWeLove("New York City");
 		DestinationPage dp = new DestinationPage(driver);
-		dp.enterKeywords("queen mary");
-		dp.verifyKeywordSearch("queen mary");
+		dp.enterKeywords("bike");
+		dp.verifyKeywordSearch("bike");
 	}
 
 	@Test(description = "TC_TA_019")
@@ -86,13 +116,15 @@ public class DestinationPageCases extends BaseTest {
 
 	@Test(description = "TC_TA_020")
 	public void tc_ta_020_clearFilters() {
-		String dt1 = DateUtils.getFormatedDate("mm-dd-yyyy", DateUtils.getDate(0));
-		String dt2 = DateUtils.getFormatedDate("mm-dd-yyyy", DateUtils.getDate(0));
+		Calendar c = DateUtils.getDate(0);
+		c.add(Calendar.MONTH, 2);
+		String dt1 = DateUtils.getFormatedDate("mm-dd-yyyy", c);
+		String dt2 = DateUtils.getFormatedDate("mm-dd-yyyy", c);
 
 		HomePage hp = new HomePage(driver);
 		hp.clickDestinationWeLove("New York City");
 		DestinationPage dp = new DestinationPage(driver);
-		dp.enterDate(dt1, dt2);
+		dp.enterDate(2, dt1, dt2, 10);
 		dp.enterPriceFilter(15);
 		dp.selectRating("4");
 		dp.clickClearBtn();
@@ -102,13 +134,15 @@ public class DestinationPageCases extends BaseTest {
 
 	@Test(description = "TC_TA_021")
 	public void tc_ta_021_clearAllFilters() {
-		String dt1 = DateUtils.getFormatedDate("mm-dd-yyyy", DateUtils.getDate(0));
-		String dt2 = DateUtils.getFormatedDate("mm-dd-yyyy", DateUtils.getDate(0));
+		Calendar c = DateUtils.getDate(0);
+		c.add(Calendar.MONTH, 2);
+		String dt1 = DateUtils.getFormatedDate("mm-dd-yyyy", c);
+		String dt2 = DateUtils.getFormatedDate("mm-dd-yyyy", c);
 
 		HomePage hp = new HomePage(driver);
 		hp.clickDestinationWeLove("New York City");
 		DestinationPage dp = new DestinationPage(driver);
-		dp.enterDate(dt1, dt2);
+		dp.enterDate(2, dt1, dt2, 10);
 		dp.enterPriceFilter(1);
 		dp.selectActivityDropdown(new String[] { "Sightseeing" });
 		dp.clinkOnClearAllFiltersLink();

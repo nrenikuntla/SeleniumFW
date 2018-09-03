@@ -17,7 +17,7 @@ public class SignInCases extends BaseTest {
 		SignInPage sp = new SignInPage(driver);
 		sp.clickContinueBtn();
 		DriverUtils.switchToLatestWindow(driver);
-		sp.login("venu.arram@zenq.com", "Second@123");
+		sp.login("508576537", "Test@1234");
 		sp.verifySignIn();
 	}
 
@@ -28,11 +28,24 @@ public class SignInCases extends BaseTest {
 		SignInPage sp = new SignInPage(driver);
 		sp.clickContinueBtn();
 		DriverUtils.switchToLatestWindow(driver);
-		sp.login("venu.arram@zenq.com", "Second@123");
+		sp.login("508576537", "Test@1234");
 		sp.verifySignIn();
 		hp.clickOnMyAccount();
 		MyAccountPage map = new MyAccountPage(driver);
 		map.updateFirstName("testFirstName");
+	}
 
+	@Test
+	public void tc_ta_047_verifyPurchaseHistory() {
+		HomePage hp = new HomePage(driver);
+		hp.clickOnSignIn();
+		SignInPage sp = new SignInPage(driver);
+		sp.clickContinueBtn();
+		DriverUtils.switchToLatestWindow(driver);
+		sp.login("508576537", "Test@1234");
+		sp.verifySignIn();
+		hp.clickOnMyAccount();
+		MyAccountPage map = new MyAccountPage(driver);
+		map.verifyPurchaseHistory();
 	}
 }
