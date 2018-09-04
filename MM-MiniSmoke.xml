@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="default">
+	<!-- <listeners> <listener class-name="com.placepass.marriottMoments.utils.ScreenshotListener" 
+		/> </listeners> -->
+	<test name="Regression1" preserve-order="false">
+		<classes>
+			<class name="com.placepass.marriottMoments.tests.HomePageCases" />
+			<!-- <class name="com.placepass.marriottMoments.tests.DestinationPageCases" />
+			<class name="com.placepass.marriottMoments.tests.ActivityBookingFlowCases" />
+			<class name="com.placepass.marriottMoments.tests.OthersCases" />
+			<class name="com.placepass.marriottMoments.tests.SignInCases" /> -->
+		</classes>
+	</test>
+</suite>
