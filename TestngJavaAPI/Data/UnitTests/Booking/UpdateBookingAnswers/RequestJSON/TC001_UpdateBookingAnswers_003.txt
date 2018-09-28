@@ -1,0 +1,9 @@
+{
+  "questionAnswers": [
+    {
+      "answer": "13 June 1996",
+      "bookingQuestionId": "1",
+      "productId": "V28Hi3ug0nZp7",
+      "productOptionId": "V28Hi3Tah8ONH"
+    }]
+}
